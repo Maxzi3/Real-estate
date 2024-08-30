@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Spinner from "./Spinner";
 const AllProperties = () => {
   const [allProperties, setAllProperties] = useState([]); // Full list of properties from API
@@ -85,7 +86,7 @@ const AllProperties = () => {
               <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                 <img
                   className="lg:h-48 md:h-36 w-full object-cover object-center"
-                  src="https://dummyimage.com/720x400"
+                  src={property.thumbnail}
                   alt="Property"
                 />
                 <div className="p-6">
@@ -97,9 +98,11 @@ const AllProperties = () => {
                   </h1>
                   <p className="leading-relaxed mb-3">{property.description}</p>
                   <div className="flex items-center justify-between">
-                    <a className="hover:text-indigo-500 text-gray-800 md:mb-2 lg:mb-0">
+                    <Link 
+                    to={`/properties/${property.id}`} 
+                     className="hover:text-indigo-500 text-gray-800 md:mb-2 lg:mb-0">
                       Learn More
-                    </a>
+                    </Link>
                     <div className="flex flex-col items-center gap-2">
                       <span
                         className={
