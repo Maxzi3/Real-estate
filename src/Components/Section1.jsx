@@ -24,8 +24,13 @@ const Section1 = () => {
           ];
         }
 
-        // Select the first 3 items after shuffle
-        const randomProperties = shuffledData.slice(0, 3);
+        // Filter to select only properties with even IDs
+        const evenProperties = shuffledData.filter(
+          (property) => parseInt(property.id) % 2 === 0
+        );
+
+        // Select the first 3 items after filtering
+        const randomProperties = evenProperties.slice(0, 3);
         setData(randomProperties);
       } catch (error) {
         console.log(
@@ -40,20 +45,20 @@ const Section1 = () => {
 
   return (
     <div>
-      <section className="text-primary   body-font">
-        <h1 className="text-center text-2xl pt-20 underline underline-offset-8 ">
+      <section className="text-primary body-font">
+        <h1 className="text-center text-2xl pt-20 underline underline-offset-8">
           Featured Properties
         </h1>
         <Spinner loading={loading} />
-        <div className="container px-5 py-24 mx-auto grid grid-cols-1 md:gap-2 gap-10 md:grid-cols-3 md:w-11/12 ">
+        <div className="container px-5 py-24 mx-auto grid grid-cols-1 md:gap-2 gap-10 md:grid-cols-3 md:w-11/12">
           {data.map((property) => (
             <div key={property.id} className="flex flex-col md:flex-row -m-4">
-              <div className="p-4 md:w-full ">
+              <div className="p-4 md:w-full">
                 <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                   <img
                     className="lg:h-48 md:h-36 w-full object-cover object-center"
                     src={property.thumbnail}
-                    alt="blog"
+                    alt="property"
                   />
                   <div className="p-6">
                     <h2 className="tracking-widest text-xs title-font font-medium text-secondary mb-1">
@@ -65,16 +70,19 @@ const Section1 = () => {
                     <p className="leading-relaxed mb-3">
                       {property.description}
                     </p>
-                    <div className="flex flex-row justify-between items-center ">
-                      <a className="hover:text-indigo-500 text-gray-800 inline-flex items-center md:mb-2 lg:mb-0">
+                    <div className="flex flex-row justify-between items-center">
+                      <Link
+                        to={`/properties/${property.id}`}
+                        className="hover:text-indigo-500  md:mb-2 lg:mb-0"
+                      >
                         Learn More
-                      </a>
+                      </Link>
                       <div className="flex flex-col gap-2">
-                        <span className="text-red-600 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1  line-through">
+                        <span className="text-red-600 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 line-through">
                           {property.price}
                         </span>
                         <div>
-                          <h1 className="text-xs">30%off</h1>
+                          <h1 className="text-xs">30% off</h1>
                           <span className="text-secondary font-bold inline-flex items-center leading-none text-xl">
                             {property.price
                               ? `$${(
@@ -95,7 +103,7 @@ const Section1 = () => {
         </div>
         <Link
           to="/properties"
-          className="bg-primary text-white py-2 px-1 rounded hover:bg-secondary flex justify-center w-32 mx-auto "
+          className="bg-primary text-white py-2 px-1 rounded hover:bg-secondary flex justify-center w-32 mx-auto"
         >
           Load More
         </Link>

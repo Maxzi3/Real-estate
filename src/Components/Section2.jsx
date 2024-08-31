@@ -48,25 +48,6 @@ const Section2 = () => {
           </div>
         </div>
       </div>
-
-      {/* <!-- Our Team Section --> */}
-      <section class="team">
-        <h2>Meet Our Team</h2>
-        <div class="team-member">
-          <img src="team-member1.jpg" alt="John Doe" />
-          <h3>John Doe</h3>
-          <p>Founder & CEO</p>
-        </div>
-      </section>
-
-      {/* <!-- Testimonials Section --> */}
-      <div>
-        <h2>What Our Clients Say</h2>
-        <blockquote>
-          "Real Estate Co. helped me find my dream home! Their service is
-          outstanding!" - Jane Smith
-        </blockquote>
-      </div>
     </div>
   );
 };

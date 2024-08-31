@@ -1,6 +1,7 @@
 import React from 'react'
 import Hero from '../Components/Hero'
 import Section2 from '../Components/Section2';
+import Team from '../Components/Team'
 
 const AboutPage = () => {
   return (
@@ -11,6 +12,7 @@ const AboutPage = () => {
         button="Search Now"
       />
       <Section2/>
+      <Team/>
 
     </div>
   );

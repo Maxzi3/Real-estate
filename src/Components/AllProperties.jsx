@@ -100,15 +100,15 @@ const AllProperties = () => {
                   <div className="flex items-center justify-between">
                     <Link 
                     to={`/properties/${property.id}`} 
-                     className="hover:text-indigo-500 text-gray-800 md:mb-2 lg:mb-0">
+                     className="hover:text-indigo-500 md:mb-2 lg:mb-0">
                       Learn More
                     </Link>
                     <div className="flex flex-col items-center gap-2">
                       <span
                         className={
                           parseInt(property.id) % 2 === 0
-                            ? "text-red-600 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-xs pr-3 md:py-1  line-through"
-                            : " mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-xl  md:py-1 pt-2  text-primary font-bold "
+                            ? "text-red-600 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-xs pr-3 md:py-1  line-through "
+                            : " mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-xl  md:py-1 pt-2  text-primary font-bold z-0"
                         }
                       >
                         {property.price}
@@ -117,7 +117,7 @@ const AllProperties = () => {
                         <h1 className="text-xs">
                           {" "}
                           {parseInt(property.id) % 2 === 0 ? ( // Check if the ID is even
-                            <span className="text-red-500 animate-pulse">
+                            <span className="text-red-500 ">
                               30% off
                             </span>
                           ) : (

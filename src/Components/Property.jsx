@@ -6,6 +6,7 @@ import { FaLocationDot } from "react-icons/fa6";
 const Property = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const fetchHouse = async () => {
       const apiUrl = "https://ebuy-api.onrender.com/";
@@ -37,9 +38,14 @@ const Property = () => {
     );
   }
 
+  const isEvenId = parseInt(PropertyItem.id) % 2 === 0;
+  const originalPrice = PropertyItem.price
+    ? Number(PropertyItem.price.replace(/[$,]/g, "").trim())
+    : 0;
+  const discountedPrice = originalPrice * 0.7;
+
   return (
     <div className="p-4 border md:w-11/12 mx-auto bg rounded-md shadow-md">
-      
       <img
         src={PropertyItem.thumbnail || "https://dummyimage.com/721x401"}
         alt={PropertyItem.type}
@@ -51,9 +57,32 @@ const Property = () => {
         </h3>
         <p className="text-primary mb-2">{PropertyItem.location}</p>
         <p className="text-secondary mb-2">
-          ClosestLandmark : {PropertyItem.closestLandmark}
+          Closest Landmark: {PropertyItem.closestLandmark}
         </p>
-        <p className="text-secondary font-bold mb-2">{PropertyItem.price}</p>
+
+        {/* Price Display */}
+        <div className="">
+          <span
+            className={
+              isEvenId
+                ? "text-red-600 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-xs pr-3 md:py-1 line-through"
+                : "mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-xl md:py-1 pt-2 text-primary font-bold z-0"
+            }
+          >
+            ${originalPrice.toFixed(2)}
+          </span>
+          <div>
+            {isEvenId ? (
+              <>
+                <h1 className="text-xs text-primary">30% off</h1>
+                <span className="text-secondary font-bold text-xl">
+                  ${discountedPrice.toFixed(2)}
+                </span>
+              </>
+            ) : null}
+          </div>
+        </div>
+
         <p className="text-primary mt-2">{PropertyItem.description}</p>
         <ul className="list-disc pl-4 text-primary">
           {PropertyItem.amenities &&
@@ -65,7 +94,11 @@ const Property = () => {
           <p className="text-secondary flex items-center gap-2 py-4">
             <FaLocationDot /> {PropertyItem.address}
           </p>
-          <a href={PropertyItem.sellerLink} target="blank" className="text-secondary animate-pulse">
+          <a
+            href={PropertyItem.sellerLink}
+            target="_blank"
+            className="text-secondary animate-pulse"
+          >
             Buy Now
           </a>
         </span>

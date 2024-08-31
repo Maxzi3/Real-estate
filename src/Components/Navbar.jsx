@@ -5,13 +5,15 @@ import {NavLink} from "react-router-dom"
 
 const Navbar = () => {
   const [IsOpen, setIsOpen] = useState(false);
-
+  const linkClass = ({isActive}) => isActive
+    ? "mr-5 hover:text-secondary text-secondary"
+    : "mr-5 hover:text-secondary";
   const toggleMenu = () => {
     setIsOpen(!IsOpen);
   };
   return (
     <div>
-      <header className="text-white body-font bg-primary fixed w-full shadow-md top-0  ">
+      <header className="text-white body-font bg-primary fixed w-full shadow-md top-0 z-50 ">
         <div className="container mx-auto flex p-5 flex-row justify-between items-center">
           <a className="flex title-font font-medium items-center  hover:text-secondary">
             <span className="ml-3 text-xl">M-HOMES</span>
@@ -29,17 +31,17 @@ const Navbar = () => {
 
           {/* Desktop view for the Menu */}
 
-          <nav className=" hidden md:ml-auto md:flex flex-wrap items-center text-base justify-center ">
-            <NavLink to="/" className="mr-5 hover:text-secondary">
+          <nav className=" hidden md:ml-auto md:flex flex-wrap items-center text-base justify-center z-50 ">
+            <NavLink to="/" className={linkClass}>
               Home
             </NavLink>
-            <NavLink to="/properties" className="mr-5 hover:text-secondary">
+            <NavLink to="/properties" className={linkClass}>
               All Properties
             </NavLink>
-            <NavLink to="/about" className="mr-5 hover:text-secondary">
+            <NavLink to="/about" className={linkClass}>
               About us
             </NavLink>
-            <NavLink to="/contact" className="mr-5 hover:text-secondary">
+            <NavLink to="/contact" className={linkClass}>
               Contact
             </NavLink>
           </nav>
@@ -55,7 +57,7 @@ const Navbar = () => {
             <NavLink
               to="/"
               onClick={toggleMenu}
-              className="p-4 hover:text-secondary"
+              className={linkClass}
             >
               Home
             </NavLink>
@@ -63,7 +65,7 @@ const Navbar = () => {
             <NavLink
               to="/properties"
               onClick={toggleMenu}
-              className="p-4 hover:text-secondary"
+              className={linkClass}
             >
               All Properties
             </NavLink>
@@ -71,7 +73,7 @@ const Navbar = () => {
             <NavLink
               to="/about"
               onClick={toggleMenu}
-              className="p-4 hover:text-secondary"
+              className={linkClass}
             >
               About us
             </NavLink>
@@ -79,7 +81,7 @@ const Navbar = () => {
             <NavLink
               to="/contact"
               onClick={toggleMenu}
-              className="p-4 hover:text-secondary"
+              className={linkClass}
             >
               Contact
             </NavLink>
