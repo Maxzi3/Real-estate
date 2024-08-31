@@ -8,6 +8,11 @@ const Navbar = () => {
   const linkClass = ({isActive}) => isActive
     ? "mr-5 hover:text-secondary text-secondary"
     : "mr-5 hover:text-secondary";
+  const linkClass2 = ({ isActive }) =>
+    isActive
+      ? "p-4 hover:text-secondary text-secondary"
+      : "p-4 hover:text-secondary";
+    
   const toggleMenu = () => {
     setIsOpen(!IsOpen);
   };
@@ -57,7 +62,7 @@ const Navbar = () => {
             <NavLink
               to="/"
               onClick={toggleMenu}
-              className={linkClass}
+              className={linkClass2}
             >
               Home
             </NavLink>
@@ -65,7 +70,7 @@ const Navbar = () => {
             <NavLink
               to="/properties"
               onClick={toggleMenu}
-              className={linkClass}
+              className={linkClass2}
             >
               All Properties
             </NavLink>
@@ -73,7 +78,7 @@ const Navbar = () => {
             <NavLink
               to="/about"
               onClick={toggleMenu}
-              className={linkClass}
+              className={linkClass2}
             >
               About us
             </NavLink>
@@ -81,7 +86,7 @@ const Navbar = () => {
             <NavLink
               to="/contact"
               onClick={toggleMenu}
-              className={linkClass}
+              className={linkClass2}
             >
               Contact
             </NavLink>
