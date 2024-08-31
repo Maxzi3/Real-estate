@@ -6,7 +6,7 @@ import AboutPage from "./Pages/AboutPage"
 import AllPropertiespage from './Pages/AllPropertiespage'
 import ContactPage from './Pages/ContactPage'
 import PropertyPage from './Pages/PropertyPage'
-import NotFoundPage from './Pages/NotfoundPage'
+import NotFoundPage from './Pages/NotFound'
 
 const App = () => {
   const Router = createBrowserRouter(

@@ -1,7 +1,7 @@
 import React from "react";
 import { FaFaceFrown } from "react-icons/fa6";
 
-const NotFoundPage = () => {
+const NotFound = () => {
   return (
     <div>
       <FaFaceFrown className=" text-8xl mx-auto my-24 text-center text-red-600 animate-pulse" />
@@ -15,4 +15,4 @@ const NotFoundPage = () => {
   );
 };
 
-export default NotFoundPage;
+export default NotFound;
