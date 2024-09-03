@@ -10,6 +10,7 @@ const Contact = () => {
             <a
               className="underline underline-offset-4 cursor-pointer"
               href="https://wa.me/2349026575211"
+              target="_blank"
             >
               Contact Us
             </a>{" "}

@@ -70,7 +70,7 @@ const AllProperties = () => {
       {/* Search Bar */}
       <div className="mb-4">
         <input
-          className="border-2 p-2 w-11/2 mx-10"
+          className="border-2 p-2 md:w-11/12 mx-10"
           type="search"
           name="Search"
           placeholder="Search by location"
@@ -78,7 +78,7 @@ const AllProperties = () => {
           onChange={handleSearch}
         />
       </div>
-      <Spinner loading={Loading}/>
+      <Spinner loading={Loading} />
       <section>
         <div className="container px-5 py-24 mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
           {displayedProperties.map((property) => (
@@ -87,7 +87,7 @@ const AllProperties = () => {
                 <img
                   className="lg:h-48 md:h-36 w-full object-cover object-center"
                   src={property.thumbnail}
-                  alt="Property"
+                  alt={property.type}
                 />
                 <div className="p-6">
                   <h2 className="tracking-widest text-xs title-font font-medium text-secondary mb-1">
@@ -98,9 +98,10 @@ const AllProperties = () => {
                   </h1>
                   <p className="leading-relaxed mb-3">{property.description}</p>
                   <div className="flex items-center justify-between">
-                    <Link 
-                    to={`/properties/${property.id}`} 
-                     className="hover:text-indigo-500 md:mb-2 lg:mb-0">
+                    <Link
+                      to={`/properties/${property.id}`}
+                      className="hover:text-indigo-500 md:mb-2 lg:mb-0"
+                    >
                       Learn More
                     </Link>
                     <div className="flex flex-col items-center gap-2">
@@ -117,9 +118,7 @@ const AllProperties = () => {
                         <h1 className="text-xs">
                           {" "}
                           {parseInt(property.id) % 2 === 0 ? ( // Check if the ID is even
-                            <span className="text-red-500 ">
-                              30% off
-                            </span>
+                            <span className="text-red-500 ">30% off</span>
                           ) : (
                             ""
                           )}

@@ -58,7 +58,7 @@ const Section1 = () => {
                   <img
                     className="lg:h-48 md:h-36 w-full object-cover object-center"
                     src={property.thumbnail}
-                    alt="property"
+                    alt={property.type}
                   />
                   <div className="p-6">
                     <h2 className="tracking-widest text-xs title-font font-medium text-secondary mb-1">
